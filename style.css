@@ -1,59 +1,39 @@
-body
-{
-	background-color: #635666;
+body {
+	background-color: black;
 	color:  #D3EBCD;
-	text-align:  center;
+	margin:  0;
 }
 
-.Nav {
-	border: 1px solid white;
-
-	margin-top:  2.5em;
-	margin-bottom:  2.5em;
-	margin-left:  2.5em;
-	margin-right:  2.5em;
-	padding-bottom:  2.5em;
-}
-
-.LeftButton {
-	display:  inline-block;
+nav {
+	width:  100%;
 	float:  left;
-
-	padding: 2.5em 2.5em 2.5em 2.5em;
-	margin-left:  2.5em;
-	margin-top:  2.5em;
-	
-
-	border-radius: 10px;
-	border:  1px solid white;
-
-	color:  limegreen;
-	background-color: #black;
 }
 
-.MiddleButton {
-	display:  inline-block;
-	text-align:  center;
-
-	margin-top:  2.5em;
-	padding: 2.5em 2.5em 2.5em 2.5em;
-
-	border-radius: 10px;
-	border:  1px solid white;
-
-	color:  limegreen;
+.menu {
+	margin:  0;
+	padding:  8px;
+	height:  17px;
+	background-color:  #334a94;
 }
 
-.RightButton {
-	display:  inline-block;
-	float:  right;
-	
-	margin-top:  2.5em;
-	margin-right:  2.5em;
-	padding: 2.5em 2.5em 2.5em 2.5em;
+.menu li {
+	display:  inline;
+}
 
-	border-radius: 10px;
-	border:  1px solid white;
+.button {
+	font-family:  Arial;
+	font-size:  1em;
+	font-style:  none;
+	color:  white;
+	padding:  8px;
+	text-decoration:  none;
+}
 
-	color:  limegreen;	
+.button:link {
+	background-color: #334a94;
+	color: white;
+}
+
+.button:hover {
+	background-color: #786ed4;
 }
