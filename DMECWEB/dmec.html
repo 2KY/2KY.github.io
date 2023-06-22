@@ -11,6 +11,9 @@
     <script src="moment.js"></script>
 </head>
 
+<style>
+    body { background-color: #242a2f; }
+</style>
 <body>
     <div class="container mt-5">
         <div class="row">
@@ -20,50 +23,55 @@
                         <center><h5 class="card-title">Los Santos County Department of Medical Examiner-Coroner</h5></center>
                         <center><img src="https://cdn.discordapp.com/attachments/465675591538966548/1120088728455614614/coroner.png" width="150px"></center>
                         <div class="form-group">
-                            <label for="typeofdeath">Type of Death</label>
-                            <select class="form-control" id="typeofdeath">
+                            <label for="jobtitle">Job Classification</label>
+                            <select class="form-control" id="jobtitle" value="F">
                                 <option value="" selected disabled>Please Select</option>
-                                <option value="C">CK</option>
-                                <option value="P">PK</option>
+                                <option value="F">Forensic Attendant</option>
+                                <option value="C">Coroner Investigator</option>
+                                <option value="M">Medical Examiner</option>
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label for="typeofdeath">Type of Death</label>
+                            <select class="form-control" id="typeofdeath" value="CK">
+                                <option value="" selected disabled>Please Select</option>
+                                <option value="CK">CK</option>
+                                <option value="PK">PK</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="datetime">Date & Time</label>
+                            <label for="datetime">Date</label>
                             <input type="text" id="datetime" style="text-transform: uppercase;" class="form-control" placeholder="DD/MMM/YYYY HH:MM">
                         </div>
-                       <!-- <div class="form-group">
-                            <label for="datetime">End Date & Time</label>
-                            <input type="text" id="datetimeend" style="text-transform: uppercase;" class="form-control" placeholder="DD/MMM/YYYY HH:MM">
-                        </div>!-->
                         <div class="form-group">
                             <label for="coronername">Handling Coroner</label>
                             <input type="text" id="coronername" class="form-control" placeholder="Coroner(s) Names">
                         </div>
                         <div class="form-group">
-                            <label for="techniciansbadge">Coroner Serial Number</label>
-                            <input type="text" id="techniciansbadge" class="form-control" placeholder="Coroner(s) Serial Numbers">
+                            <label for="coronerbadge">Coroner Serial Number</label>
+                            <input type="text" id="coronerbadge" class="form-control" placeholder="Coroner(s) Serial Numbers">
                         </div>
                          <div class="form-group">
-                            <label for="technicians">Victim</label>
-                            <input type="text" id="technicians" class="form-control" value="John Doe">
+                            <label for="victimname">Victim</label>
+                            <input type="text" id="victimname" class="form-control" placeholder="John Doe">
                         </div>
                         <div class="form-group">
-                            <label for="victim">Victim Name ((OOC))</label>
-                            <input type="text" id="victim" class="form-control" placeholder="John Doe">
+                            <label for="victimnameooc">Victim Name ((OOC))</label>
+                            <input type="text" id="victimnameooc" class="form-control" placeholder="John Doe">
                         </div>
                         <div class="form-group">
-                            <label for="narrative">Probable Cause of Death</label>
+                            <label for="causeofdeath">Probable Cause of Death</label>
                             <textarea class="form-control" id="causeofdeath"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="typeofservice">Manner of Death</label>
-                            <select class="form-control" id="typeofservice">
+                            <label for="mannerofdeath">Manner of Death</label>
+                            <select class="form-control" id="mannerofdeath">
                                 <option value="" selected disabled>Please Select</option>
-                                <option value="C">Natural</option>
-                                <option value="I">Accident</option>
-                                <option value="M">Suicide</option>
-                                <option value="L">Homicide</option>
-                                <option value="O">Undetermined</option>
+                                <option value="N">Natural</option>
+                                <option value="A">Accident</option>
+                                <option value="S">Suicide</option>
+                                <option value="H">Homicide</option>
+                                <option value="U">Undetermined</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -81,7 +89,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Useful Links</h5>
                         <ul class="list-style">
-                            <li><a target="_blank" href="https://gov.gta.world/viewforum.php?f=874">Public Service Reports</a></li>
                             <li><a target="_blank" href="https://imgur.com">Imgur</a></li>
                         </ul>
                     </div>
@@ -91,7 +98,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Report Title</h5>
-                        <p id="bbtitle">[CK] - <span id="victimname">VICTIM NAME</span> ((<span id="victimnameooc">NAME</span>)) - <span id="datetimetext">DD/MMM/YYYY</span></p>
+                        <p id="bbtitle">[<span id="deathText">CK</span>] - <span id="victimText">JOHN DOE</span> ((<span id="victimnameoocText">JOHN DOE</span>)) - <span id="datetimetext">DD/MMM/YYYY</span></p>
                         <h5 class="card-title">Copy BBcode</h5>
                         <p id="bbcode">
                             [divbox=white][img]https://cdn.discordapp.com/attachments/742936416832585728/971008079586009138/165157674249549858.png[/img]</br>
@@ -106,28 +113,27 @@
                             [center][b]A. WRITTEN REPORT[/b][/center]
 
                             [list=none][color=transparent]spacer[/color]
-                            The County Coroner's Office has been called regarding the decease that occurred at the location of [b][Place of Death][/b]. Upon receiving the call from[b] [the Department][/b], Coroner's Office dispatched a Forensic Attendant to the crime scene to conduct an investigation on the [b][Date and Time].
+                            The County Coroner's Office has been called regarding the decease that occurred at the location of [b][Place of Death][/b]. Upon receiving the call from[b] [the Department][/b], Coroner's Office dispatched a <span id="jobText">The Forensic Attendant</span> to the crime scene to conduct an investigation on the [b][Date and Time].
                             [/b]
-                            The Forensic Attendant, [b][<span id="coronertext">[Name Coroner]</span>][/b], Serial Number[b] [Serial Number][/b], arrived at the scene and identified the individual as[b] [Decedent's Name][/b], who was pronounced dead at [b][Pronounced Time of Death][/b]. Following an initial investigation, The Forensic Attendant came up with the following [b]synopsis[/b]: [Synopsis of events leading to death, personal opinion must be excluded]
+                            <span id="jobText">The Forensic Attendant</span>, [b]<span id="coronertext">Name Coroner</span>[/b], Serial Number[b] <span id="badgetext">Serial Number</span>[/b], arrived at the scene and identified the individual as[b] [Decedent's Name][/b], who was pronounced dead at [b][Pronounced Time of Death][/b].</br> Following an initial investigation, The <span id="jobText">The Forensic Attendant</span> came up with the following [b]synopsis[/b]: <span id="narrativeText">[Synopsis of events leading to death, personal opinion must be excluded]</span>
 
-                            Based on the information gathered from the scene investigation and the decedent's medical history (if available), the probable cause of death was determined to be [b][Probable Cause of Death][/b]. The manner of death was classified as [b][Manner of Death][/b].
+                            Based on the information gathered from the scene investigation and the decedent's medical history (if available), the probable cause of death was determined to be [b]<span id="causeofdeathText"></span>[/b]. The manner of death was classified as [b]<span id="mannerofdeathText">[Manner of Death]</span>[/b].
                             [/list]
 
                             [list=none][color=transparent]spacer[/color][center][b]B. PHOTOGRAPHIC DOCUMENTARY RECORD[/b][/center]
 
                             [customspoiler=SCENE PHOTOGRAPHY]
-                            [img]LINK HERE[/img]
-                            [img]LINK HERE[/img][/customspoiler]
+                            <span id="imgs">[img]imagehere[/img]</span>[/customspoiler]
 
                             [divbox=transparent][center][color=Black][size=85][b][u](( OUT OF CHARACTER ))[/u][/b][/size][/center][/color][hr][/hr]
                             [size=75] This section clarifies whether or not if the player was character killed or player killed. 
-                            In this case the player was; ANSWER
+                            In this case the player was; <span id="deathText">CK</span>
 
                             [morgue screen, cinjuries, cdna links: ][/size][/divbox]
 
                             [center][b]C. STATEMENT[/b][/center]
 
-                            [divbox=transparent][center][color=Black][size=85]As a Forensic Attendant, I have made detailed notes of my findings and conclusions, and these notes are available for review if necessary. However, I must note that these notes do not contain any personal opinions and are solely based on the evidence and facts available to me.
+                            [divbox=transparent][center][color=Black][size=85]As a <span id="jobText">The Forensic Attendant</span>, I have made detailed notes of my findings and conclusions, and these notes are available for review if necessary. However, I must note that these notes do not contain any personal opinions and are solely based on the evidence and facts available to me.
 
                             In conclusion, I hope that this report provides the necessary information required for the agency to move forward with any necessary actions. Please let me know if you require any additional information or if I can be of further assistance.
 
@@ -140,37 +146,6 @@
                             It is imperative that all parties handling this document respect the privacy and confidentiality of the decedent and their family. Any violation of these laws may result in legal action being taken against the responsible parties.
 
                             This document is provided for official purposes only and is not to be construed as legal advice or medical diagnosis. If additional information or clarification is needed, please contact the Department of Medical Examiner-Coroner.[/size][/divbox]
-                            <!--[divbox=transparent][justify]<br />
-                            [table][tr][td][color=transparent]-------[/color][img]https://i.imgur.com/jygAIAD.png[/img][/td][td][hr][/hr][size=160][b]DEPARTMENT OF PUBLIC WORKS[/b][/size][color=transparent]------------------------------------------[/color]<br />
-                            [color=#535a6c][b][size=140]TECHNICIAN PUBLIC SERVICE REPORT[/size][/b][/color][hr][/hr]<br />
-                            [color=#535a6c][u][size=70] [right]CITY OF LOS SANTOS<br />
-                            DEPARTMENT OF PUBLIC WORKS<br />
-                            ELGIN AVENUE, VINEWOOD, LOS SANTOS, SA[/right][/size][/u][/color][/td][/tr][/table]<br />
-                            [divbox=#497a57][center][b][color=#FFFFFF]General Information[/color][/b][/center][/divbox][divbox=transparent][size=102][list=none][list=none]<br />
-                            <br />
-                            [b]START DATE & TIME[/b]: <span id="datetimetext">DD/MMM/YYYY HH:MM</span><br />
-                            [b]END DATE & TIME[/b]: <span id="datetimetextend">DD/MMM/YYYY HH:MM</span><br />
-                            <br />
-                            [b]HANDLING TECHNICIANS[/b]: <span id="techtext">Name here</span><br />
-                            <br />
-                            [b]TYPE OF SERVICE[/b] [size=80] ([i]Mark with ☑ where applicable.[/i])[/size]<br />
-                            <span id="cleaningText">☐</span> Cleaning[color=transparent]----------------..--[/color]<span id="inspectText">☐</span> Inspection<br />
-                            <span id="maintText">☐</span> Maintenance[color=transparent]---------------[/color]<span id="landscapeText">☐</span> Landscaping[color=transparent].----------[/color]<span id="otherText">☐</span> Other<br />
-                            <br />
-                            <br />
-                            [/size][/list][/list][/divbox]<br />
-                            [divbox=#497a57][center][b][color=#FFFFFF]Service Details[/color][/b][/center][/divbox][divbox=transparent]<br />
-                            [center][size=90]Provide the necessary information about the provided service below, such as the location of the incident and the applied measures. <br />
-                            In case of a vehicle towing/impound ensure to provide information about the vehicle make and model, as well as the plate.[/center][/size]<br />
-                            <br />
-                            [list=none][list=none][b]NARRATIVE[/b]: <span id="narrativetext">Comprehensive Answer</span><br />
-                            <br />
-                            <br />
-                            [altspoiler=OOC RP SCREENSHOT]<br />
-                            <span id="imgs">[img]imagehere[/img]</span><br/>
-                            [/altspoiler]<br />
-                            <br />
-                            [/list][/list][/divbox]!--><br />
                         </p>
                         <button class="btn btn-secondary mt-3" onclick="copy_data(bbtitle)">Copy Title</button>
                         <button class="btn btn-primary mt-3" onclick="copy_data(bbcode)">Copy Code</button>
@@ -185,12 +160,107 @@
     </script>
     <script>
         $(document).ready(function(){
+            var date = moment.utc();
+            var currentDate2 = date.format('DD/MMM/YYYY').toUpperCase();
+            document.getElementById('datetime').value = currentDate2;
+            $("#datetimetext").text(currentDate2);
+
             $("#coronername").on("change keypress input", function() {
                 var coronertext = $("#coronername").val();
                 $("#coronertext").text(coronertext);
-            });   
+            });  
 
+            $("#victimname").on("change keypress input", function() {
+                var victimText = $("#victimname").val();
+                $("#victimText").text(victimText);
+            });  
+
+            $("#victimnameooc").on("change keypress input", function() {
+                var victimnameoocText = $("#victimnameooc").val();
+                $("#victimnameoocText").text(victimnameoocText);
+            });  
+
+            $("#coronerbadge").on("change keypress input", function() {
+                var badgetext = $("#coronerbadge").val();
+                $("#badgetext").text(badgetext);
+            }); 
+
+            $("#datetime").on("change keypress input", function() {
+                var datetimetext = $("#datetime").val();
+                $("#datetimetext").text(datetimetext);
+            });
+
+            $("#causeofdeath").on("change keypress input", function() {
+                var causeofdeathText = $("#causeofdeath").val();
+                $("#causeofdeathText").text(causeofdeathText);
+            });
+            const selectType = document.querySelector('#typeofdeath');
+            selectType.addEventListener('change', (event) => {
+                var typeValue = event.target.value
+                $("#typeofdeath").text(typeValue);
+
+                if(typeValue == 'CK') {
+                    $("#deathText").text("CK");
+                }
+                if(typeValue == 'PK') {
+                    $("#deathText").text("PK");
+                }
+            });
+            const selectType2 = document.querySelector('#jobtitle');
+            selectType2.addEventListener('change', (event) => {
+                var typeValue2 = event.target.value
+                $("#jobtitle").text(typeValue2);
+
+                if(typeValue2 == 'F') {
+                    $("#jobText").text("Forensic Attendant");
+                }
+                if(typeValue2 == 'C') {
+                    $("#jobText").text("Coroner Investigator");
+                }
+                if(typeValue2 == 'M') {
+                    $("#jobText").text("Medical Examiner");
+                }
+            });
+            const selectType3 = document.querySelector('#mannerofdeath');
+            selectType3.addEventListener('change', (event) => {
+                var typeValue3 = event.target.value
+                $("#mannerofdeath").text(typeValue3);
+
+                if(typeValue3 == 'N') {
+                    $("#mannerofdeathText").text("Natural");
+                }
+                if(typeValue3 == 'A') {
+                    $("#mannerofdeathText").text("Accident");
+                }
+                if(typeValue3 == 'S') {
+                    $("#mannerofdeathText").text("Suicide");
+                }
+                if(typeValue3 == 'H') {
+                    $("#mannerofdeathText").text("Homicide");
+                }
+                if(typeValue3 == 'U') {
+                    $("#mannerofdeathText").text("Undetermined");
+                }
+            });
+            document.querySelector('#narrative').addEventListener('keyup', function() {
+                document.querySelector('#narrativeText').innerText = this.value;
+            });
+            $("#images").on("change keypress input", function() {
+                var imgs = $("#images").val();
+                var imgss = imgs.split(","), i;
+                var allimgs = "";
+                for (i = 0; i< imgss.length; i++) {
+                    var newimg = "[img]";
+                    newimg += imgss[i];
+                    newimg += "[/img]";
+                    allimgs += newimg;
+                }
+                $("#imgs").text(allimgs);
+            });   
         }); 
+
+        window.addEventListener('change', event => {
+        });
         function copy_data(containerid) {
             var range = document.createRange();
             range.selectNode(containerid); //changed here
