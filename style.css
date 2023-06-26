@@ -1,4 +1,4 @@
-body {
+.body {
 	background-color: black;
 	color:  #D3EBCD;
 	margin:  0;
@@ -14,12 +14,12 @@ nav {
 .menu {
 	margin:  0;
 	padding:  8px;
-	height:  17px;
+	height:  2.5rem;
 	background-color:  #334a94;
 }
 
 .menu li {
-	display:  inline;
+	display:  inline !important;
 }
 
 .button {
@@ -62,6 +62,7 @@ nav {
 
 .First h3 {
 	color:  black;
+	margin-left: 50px;
 }
 
 .FirstParagraph {
